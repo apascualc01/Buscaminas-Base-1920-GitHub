@@ -139,7 +139,26 @@ public class VentanaPrincipal {
 	 * Método que inicializa todos los lísteners que necesita inicialmente el programa
 	 */
 	public void inicializarListeners(){
-		//TODO
+		botonEmpezar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				juego.inicializarPartida();
+				refrescarPantalla();
+			
+			for(int i = 0; i < botonesJuego.length; i++) {
+				for(int j = 0; j < botonesJuego.length; j++) {
+					botonesJuego[i][j].setEnabled(true);
+				}
+			}
+			}
+		});
+		for (int i = 0; i < botonesJuego.length; i++) {
+			for (int j = 0; j < botonesJuego[i].length; j++) {
+				botonesJuego[i][j].addActionListener(new ActionBoton(this, i, j));
+			}
+		}
 	}
 	
 	
@@ -156,7 +175,13 @@ public class VentanaPrincipal {
 	 * @param j: posición horizontal de la celda.
 	 */
 	public void mostrarNumMinasAlrededor(int i , int j) {
-		//TODO
+		int num = juego.getMinasAlrededor(i, j);
+		panelesJuego[i][j].removeAll();
+		JLabel aux = new JLabel();
+		aux.setText(Integer.toString(num));
+		aux.setForeground(correspondenciaColores[num]);
+		panelesJuego[i][j].add(aux);
+		refrescarPantalla();
 	}
 	
 	
@@ -166,14 +191,27 @@ public class VentanaPrincipal {
 	 * @post : Todos los botones se desactivan excepto el de volver a iniciar el juego.
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
-		//TODO
+		if(porExplosion) {
+			new JOptionPane();
+			JOptionPane.showMessageDialog(null, "Ha perdido la partida por pinchar en una mina", "Pantalla fin", 1);
+		}else {
+			new JOptionPane();
+			JOptionPane.showMessageDialog(null, "Ha ganado el juego!!!!", "Pantalla fin", 1);
+		}
+		
+		//Descativamos los botones
+		for(int i = 0; i < botonesJuego.length; i++) {
+			for(int j = 0; j < botonesJuego.length; j++) {
+				botonesJuego[i][j].setEnabled(false);
+			}
+		}
 	}
 
 	/**
 	 * Método que muestra la puntuación por pantalla.
 	 */
 	public void actualizarPuntuacion() {
-		//TODO
+		pantallaPuntuacion.setText(Integer.toString(juego.getPuntuacion()));
 	}
 	
 	/**

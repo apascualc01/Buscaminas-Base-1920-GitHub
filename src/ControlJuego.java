@@ -103,9 +103,6 @@ public class ControlJuego {
 		}
 		int jInicioAux= j_Inicio;
 		
-		if(j == 9) {
-			System.out.println("HOLA");
-		}
 		
 		while(i_Inicio <= i_Final) {
 			j_Inicio = jInicioAux;
@@ -132,7 +129,12 @@ public class ControlJuego {
 	 * @return : Verdadero si no ha explotado una mina. Falso en caso contrario.
 	 */
 	public boolean abrirCasilla(int i, int j){
-		return false;
+		if(tablero[i][j] != -1) {
+			puntuacion++;
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	
@@ -142,7 +144,11 @@ public class ControlJuego {
 	 * @return Devuelve verdadero si se han abierto todas las celdas que no son minas.
 	 **/
 	public boolean esFinJuego(){
+		if(puntuacion == 80) {
+			return true;
+		}else {	
 		return false;
+		}
 	}
 	
 	
@@ -168,7 +174,8 @@ public class ControlJuego {
 	 * @return Un entero que representa el número de minas alrededor de la celda
 	 */
 	public int getMinasAlrededor(int i, int j) {
-		return 0;
+			return tablero[i][j];
+		
 	}
 
 	/**
@@ -176,7 +183,7 @@ public class ControlJuego {
 	 * @return Un entero con la puntuación actual
 	 */
 	public int getPuntuacion() {
-		return 0;
+		return puntuacion;
 	}
 	
 }
