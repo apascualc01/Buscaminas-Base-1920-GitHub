@@ -143,17 +143,19 @@ public class VentanaPrincipal {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				pantallaPuntuacion.setText("0");
 			
-				juego.inicializarPartida();
-				refrescarPantalla();
-			
-			for(int i = 0; i < botonesJuego.length; i++) {
-				for(int j = 0; j < botonesJuego.length; j++) {
-					botonesJuego[i][j].setEnabled(true);
+				for(int i = 0; i < botonesJuego.length; i++) {
+					for(int j = 0; j < botonesJuego.length; j++) {
+						panelesJuego[i][j].removeAll();
+						panelesJuego[i][j].add(botonesJuego[i][j]);
+						botonesJuego[i][j].setEnabled(true);
+					}
 				}
-			}
-			}
-		});
+				refrescarPantalla();
+				juego.inicializarPartida();
+				}
+			});
 		for (int i = 0; i < botonesJuego.length; i++) {
 			for (int j = 0; j < botonesJuego[i].length; j++) {
 				botonesJuego[i][j].addActionListener(new ActionBoton(this, i, j));
@@ -242,4 +244,6 @@ public class VentanaPrincipal {
 
 
 
+	
+	
 }
