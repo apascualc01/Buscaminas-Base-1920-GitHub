@@ -88,7 +88,7 @@ public class ControlJuego {
 		int i_Final = i+1;
 		int j_Inicio = j-1;
 		int j_Final = j+1;
-		//Comenterio 
+		
 		if(i_Inicio <0) {
 			i_Inicio = 0;
 		}
