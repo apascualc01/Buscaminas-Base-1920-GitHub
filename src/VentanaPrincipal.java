@@ -242,7 +242,20 @@ public class VentanaPrincipal {
 		inicializarListeners();		
 	}
 
-
+	public void abrirJuntas(int posx, int posy) {
+		
+		
+		for(int i = posx -1; i <= posx+1; i++) {
+			for(int j = posy -1; j <= posy+1; j++) {
+				if((i >= 0) && (j >= 0) && (i<juego.LADO_TABLERO) && (j<juego.LADO_TABLERO)) {
+					if(panelesJuego[i][j].getComponent(0).getClass() == JButton.class) {
+						botonesJuego[i][j].doClick();
+					}
+			
+				}
+			}	
+		}
+	}
 
 	
 	
