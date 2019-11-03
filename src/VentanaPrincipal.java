@@ -12,7 +12,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
+/**
+ * @author Alejandro Pascual Clemente
+ * @version 1.1
+ * @since 24/10/2019
+ * @see #juego
+ *<p>Esta clase inicilizará los elementos y los listener del programa</p>
+ *{@link #inicializar()}
+ *{@code ventana.setVisible(true);
+		inicializarComponentes();	
+		inicializarListeners();	}
+ */
 
 public class VentanaPrincipal {
 
@@ -241,9 +251,17 @@ public class VentanaPrincipal {
 		inicializarComponentes();	
 		inicializarListeners();		
 	}
-
+	
+	/**
+	 * Método que abre las casillas  adllacentes siempre que el valor de esa casilla sea 0.
+	 * Tambien cambiamos el coclor de fondo de panelImaen en función de si acirta el juador o no, lamando al método cambiarColor.
+	 * @param posx
+	 * @param posy
+	 */
 	public void abrirJuntas(int posx, int posy) {
 		
+		
+		cambiarColor(Color.GREEN);
 		
 		for(int i = posx -1; i <= posx+1; i++) {
 			for(int j = posy -1; j <= posy+1; j++) {
@@ -255,6 +273,15 @@ public class VentanaPrincipal {
 				}
 			}	
 		}
+		cambiarColor(Color.WHITE);
+		
+	}
+	/**
+	 * Método que cambia el color de panelImagen.
+	 * @param color
+	 */
+	public void cambiarColor(Color color) {
+		panelImagen.setBackground(color);
 	}
 
 	
